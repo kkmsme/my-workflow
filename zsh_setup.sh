@@ -9,9 +9,16 @@ sudo apt install -y zsh curl
 rm -rf ${HOME}/.oh-my-zsh
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# set zsh as default shell
+if [ "$SHELL" != "$(which zsh)" ]; then
+    echo "Setting zsh as default shell..."
+    chsh -s $(which zsh)
+fi
+
+
 # cp the config to host
 ZSHRC_FILE="${HOME}/.zshrc"
-cp ./.zshrc $ZSHRC_FILE
+cp .zshrc $ZSHRC_FILE
 
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
